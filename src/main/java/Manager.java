@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Manager {
-    public static String[] AddPoster(String Poster, String[] afisha) {
+    public String[] AddPoster(String Poster, String[] afisha) {
         int x;
         if (afisha.length == 1 && afisha[0] == null) {
             x = 0;
@@ -20,11 +20,11 @@ public class Manager {
 
     }
 
-    public static String[] findAll(String[] afisha) {
+    public String[] findAll(String[] afisha) {
         return afisha;
     }
 
-    public static String[] findLast(int limit, String[] afisha) {
+    public String[] findLast(int limit, String[] afisha) {
 
         int afishaLength;
 
@@ -43,7 +43,7 @@ public class Manager {
 
 
 
-    public static String[] findLast(String[] afisha) {
+    public String[] findLast(String[] afisha) {
         return findLast(10, afisha);
 
     }
