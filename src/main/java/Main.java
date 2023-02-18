@@ -11,8 +11,8 @@ public class Main {
 //        String poster6 = "Номер один";
 //        String newName = "Добавленный фильм";
 
-        String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один",
-                "Добавленный фильм1", "добавленный фильм2", "Добавленный фильм3", "Добавленный фильм4"};
+        //String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один",
+               // "Добавленный фильм1", "добавленный фильм2", "Добавленный фильм3", "Добавленный фильм4"};
 
 //        afisha[0] = poster0;
 //        afisha[1] = poster1;
@@ -22,15 +22,15 @@ public class Main {
 //        afisha[5] = poster5;
 //        afisha[6] = poster6;
 
-        String[] afisha2 = new String[1];
-        Manager newAfisha = new Manager();
-        for (int i = 0; i < afisha.length; i++) {
-            afisha2 = newAfisha.AddPoster(afisha[i], afisha2);
+//        String[] afisha2 = new String[1];
+//        Manager newAfisha = new Manager();
+//        for (int i = 0; i < afisha.length; i++) {
+//            afisha2 = newAfisha.addPoster(afisha[i], afisha2);
+//
+//        }
+//        System.out.println (Arrays.toString(newAfisha.findAll(afisha2)));
 
-        }
-        System.out.println (Arrays.toString(newAfisha.findAll(afisha2)));
-
-        System.out.println (Arrays.toString(newAfisha.findLast(afisha2)));
+        //System.out.println (Arrays.toString(newAfisha.findLast()));
 
     }
 }

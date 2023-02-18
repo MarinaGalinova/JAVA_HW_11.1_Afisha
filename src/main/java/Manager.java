@@ -2,7 +2,31 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Manager {
-    public String[] AddPoster(String Poster, String[] afisha) {
+
+    int limit; //лимит вывода последних добавленных фильмов
+    public int getLimit() {
+        return limit;
+    }
+    public void setLimit(int limit) {
+
+        this.limit = limit;
+    }
+
+
+    String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "Добавленный фильм1", "добавленный фильм2", "Добавленный фильм3", "Добавленный фильм4"};
+    String poster = "Новый фильм";
+
+    public Manager(String[] afisha) {
+        setLimit(10);
+        this.afisha = afisha;
+    }
+
+    public Manager(int limit, String[] afisha) {
+        setLimit(limit);
+        this.afisha = afisha;
+    }
+
+    public String[] addPoster(String poster, String[] afisha) {
         int x;
         if (afisha.length == 1 && afisha[0] == null) {
             x = 0;
@@ -14,7 +38,7 @@ public class Manager {
         for (int i = 0; i < afisha.length; i++) {
             tmp[i] = afisha[i];
         }
-        tmp[tmp.length - 1] = Poster;
+        tmp[tmp.length - 1] = poster;
         afisha = tmp;
         return afisha;
 
@@ -24,7 +48,7 @@ public class Manager {
         return afisha;
     }
 
-    public String[] findLast(int limit, String[] afisha) {
+    public String[] findLast() {
 
         int afishaLength;
 
@@ -34,21 +58,21 @@ public class Manager {
             afishaLength = limit;
         }
         String[] result = new String[1];
-        for (int i = afisha.length-1; i > afisha.length-1-afishaLength; i--) {
-            result=AddPoster(afisha[i], result);
+        for (int i = afisha.length - 1; i > afisha.length - 1 - afishaLength; i--) {
+            result = addPoster(afisha[i], result);
 
         }
         return result;
     }
-
-
-
-    public String[] findLast(String[] afisha) {
-        return findLast(10, afisha);
-
-    }
-
 }
+
+
+//    public String[] findLast(String[] afisha) {
+//        return findLast(10, afisha);
+//
+//    }
+
+
 // заполняем result из массива, что лежит в поле
 // в обратном порядке
 
