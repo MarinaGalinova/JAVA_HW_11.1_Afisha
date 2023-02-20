@@ -5,8 +5,16 @@ public class Manager {
 
     protected int limit; //лимит вывода последних добавленных фильмов
     protected String[] afisha;
-    protected String poster;
+    //protected String poster;
 
+    public Manager() {
+        setLimit(10);
+
+    }
+    public Manager(int limit) {
+        setLimit(limit);
+
+    }
     public int getLimit() {
         return limit;
     }
@@ -19,36 +27,28 @@ public class Manager {
         return afisha;
     }
     public void setAfisha(String[] afisha) {
-
         this.afisha = afisha;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-    public void setPoster(String poster) {
+//    public String getPoster() {
+//        return poster;
+//    }
+//    public void setPoster(String poster) {
+//
+//        this.poster = poster;
+//    }
 
-        this.poster = poster;
-    }
-    public Manager(String[] afisha) {
-        setLimit(10);
-        this.afisha = afisha;
-    }
 
-    public Manager(int limit, String[] afisha) {
-        setLimit(limit);
-        this.afisha = afisha;
-    }
-
-    public String[] addPoster(String poster, String[] afisha) {
-        int x;
+    public String[] addPoster(String poster) {
+        int firstPosition;
+        afisha = getAfisha();
         if (afisha.length == 1 && afisha[0] == null) {
-            x = 0;
+            firstPosition = 0;
         } else {
-            x = 1;
+            firstPosition = 1;
         }
 
-        String[] tmp = new String[afisha.length + x];
+        String[] tmp = new String[afisha.length + firstPosition];
         for (int i = 0; i < afisha.length; i++) {
             tmp[i] = afisha[i];
         }
@@ -58,23 +58,32 @@ public class Manager {
 
     }
 
-    public String[] findAll(String[] afisha) {
+    public String[] findAll(String[] afisha)
+    {
         return afisha;
     }
 
     public String[] findLast() {
 
         int afishaLength;
+        afisha = getAfisha();
+        limit = getLimit();
+        int j;
+
 
         if (limit >= afisha.length) {
             afishaLength = afisha.length;
         } else {
             afishaLength = limit;
         }
-        String[] result = new String[1];
-        for (int i = afisha.length - 1; i > afisha.length - 1 - afishaLength; i--) {
-            result = addPoster(afisha[i], result);
 
+        String[] result = new String[afishaLength];
+        j = 0;
+        for (int i = afisha.length - 1; i > afisha.length - 1 - afishaLength; i--) {
+            //result = addPoster(afisha[i], result);
+
+        result[j] = afisha[i];
+        j = j +1;
         }
         return result;
     }
