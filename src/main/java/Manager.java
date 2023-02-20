@@ -3,7 +3,10 @@ import java.util.Arrays;
 
 public class Manager {
 
-    int limit; //лимит вывода последних добавленных фильмов
+    protected int limit; //лимит вывода последних добавленных фильмов
+    protected String[] afisha;
+    protected String poster;
+
     public int getLimit() {
         return limit;
     }
@@ -12,10 +15,21 @@ public class Manager {
         this.limit = limit;
     }
 
+    public String[] getAfisha() {
+        return afisha;
+    }
+    public void setAfisha(String[] afisha) {
 
-    String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "Добавленный фильм1", "добавленный фильм2", "Добавленный фильм3", "Добавленный фильм4"};
-    String poster = "Новый фильм";
+        this.afisha = afisha;
+    }
 
+    public String getPoster() {
+        return poster;
+    }
+    public void setPoster(String poster) {
+
+        this.poster = poster;
+    }
     public Manager(String[] afisha) {
         setLimit(10);
         this.afisha = afisha;

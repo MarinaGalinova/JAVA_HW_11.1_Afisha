@@ -2,11 +2,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ManagerTest {
-
-    //Manager poster1 = new Manager(String[]afisha);
     String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "1", "2", "3", "4"};
     String poster = "Новый постер";
     //Manager manager = new Manager(afisha);
+    public void setAfisha(String[] afisha) {
+        this.afisha = afisha;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    //Manager poster1 = new Manager(String[]afisha);
+
 
     @Test
     public void testAddPoster() {
