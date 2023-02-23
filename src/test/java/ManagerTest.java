@@ -2,40 +2,45 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ManagerTest {
-    String[] afisha = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "1", "2", "3", "4"};
-    String poster = "Новый постер";
-
     @Test
-    public void testAddPoster() {
-        Manager manager = new Manager();
-        manager.setAfisha(afisha);
-        afisha = manager.addPoster(poster);
+    public void test() {
 
-        String[] expected = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "1", "2", "3", "4", "Новый постер"};
-        String[] actual = afisha;
+        Manager manager = new Manager();
+        manager.addPoster("Первый добавленный");
+        manager.addPoster("Второй добавленный");
+        manager.addPoster("Третий добавленный");
+
+        String[] expected = {"Первый добавленный", "Второй добавленный", "Третий добавленный"};
+        String[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
-
     }
+
 
     @Test
     public void testFindAll() {
+
         Manager manager = new Manager();
-        String[] expected = {"Бладшот", "Вперед", "Отель 'Белград'", "Джентельмены", "Человек - невидимка", "Тролли. Мировой тур", "Номер один", "1", "2", "3", "4"};
-        String[] actual = manager.findAll(afisha);
+        manager.addPoster("Первый добавленный");
+
+        String[] expected = {"Первый добавленный"};
+        String[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void testFindLast2Parametrs() {
+    public void testFindLastParametr() {
 
         Manager manager = new Manager(3);
-        manager.setAfisha(afisha);
 
+        manager.addPoster("Первый добавленный");
+        manager.addPoster("Второй добавленный");
+        manager.addPoster("Третий добавленный");
+        manager.addPoster("Четвертый добавленный");
 
-        String[] expected = {"4", "3", "2"};
+        String[] expected = {"Четвертый добавленный", "Третий добавленный", "Второй добавленный"};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -43,22 +48,24 @@ public class ManagerTest {
     }
 
     @Test
-    public void testFindLast1Param() {
+    public void testFindLastWithoutParam() {
         Manager manager = new Manager();
-        manager.setAfisha(afisha);
 
-        String[] expected = {"4", "3", "2", "1", "Номер один", "Тролли. Мировой тур", "Человек - невидимка", "Джентельмены", "Отель 'Белград'", "Вперед"};
-        String[] actual = manager.findLast();
+        manager.addPoster("1");
+        manager.addPoster("2");
+        manager.addPoster("3");
+        manager.addPoster("4");
+        manager.addPoster("5");
+        manager.addPoster("6");
+        manager.addPoster("7");
+        manager.addPoster("8");
+        manager.addPoster("9");
+        manager.addPoster("10");
+        manager.addPoster("11");
+        manager.addPoster("12");
 
-        Assertions.assertArrayEquals(expected, actual);
-    }
 
-    @Test
-    public void testFindLast2ParamOverLenght() {
-        Manager manager = new Manager(13);
-        manager.setAfisha(afisha);
-
-        String[] expected = {"4", "3", "2", "1", "Номер один", "Тролли. Мировой тур", "Человек - невидимка", "Джентельмены", "Отель 'Белград'", "Вперед", "Бладшот"};
+        String[] expected = {"12", "11", "10", "9", "8", "7", "6", "5", "4", "3"};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);

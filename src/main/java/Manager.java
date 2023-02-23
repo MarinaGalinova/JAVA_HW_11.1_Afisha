@@ -4,99 +4,46 @@ import java.util.Arrays;
 public class Manager {
 
     protected int limit; //лимит вывода последних добавленных фильмов
-    protected String[] afisha;
-    //protected String poster;
+    private String[] afisha = new String[0];
+
 
     public Manager() {
-        setLimit(10);
-
+        this.limit = 10;
     }
 
     public Manager(int limit) {
-        setLimit(limit);
-
-    }
-
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setLimit(int limit) {
-
         this.limit = limit;
     }
 
-    public String[] getAfisha() {
-        return afisha;
-    }
 
-    public void setAfisha(String[] afisha) {
-        this.afisha = afisha;
-    }
+    public void addPoster(String poster) {
 
-//    public String getPoster() {
-//        return poster;
-//    }
-//    public void setPoster(String poster) {
-//
-//        this.poster = poster;
-//    }
-
-
-    public String[] addPoster(String poster) {
-        int firstPosition;
-        //afisha = getAfisha();
-        if (afisha.length == 1 && afisha[0] == null) {
-            firstPosition = 0;
-        } else {
-            firstPosition = 1;
-        }
-
-        String[] tmp = new String[afisha.length + firstPosition];
-        for (int i = 0; i < afisha.length; i++) {
+        String[] tmp = new String[afisha.length + 1];
+        for (int i = 0; i < tmp.length - 1; i++) {
             tmp[i] = afisha[i];
         }
         tmp[tmp.length - 1] = poster;
         afisha = tmp;
-        return afisha;
-
     }
 
-    public String[] findAll(String[] afisha) {
+    public String[] findAll() {
         return afisha;
     }
+
 
     public String[] findLast() {
 
-        int afishaLength;
-        //afisha = getAfisha();
-        //limit = getLimit();
-        int j;
-
-
-        if (limit >= afisha.length) {
-            afishaLength = afisha.length;
-        } else {
-            afishaLength = limit;
+        if (afisha.length < limit) {
+            limit = afisha.length;
         }
+        String[] tmp = new String[limit];
+        {
+            for (int i = 0; i < tmp.length; i++) {
+                tmp[i] = afisha[afisha.length - 1 - i];
+            }
+            return tmp;
 
-        String[] result = new String[afishaLength];
-        j = 0;
-        for (int i = afisha.length - 1; i > afisha.length - 1 - afishaLength; i--) {
-            //result = addPoster(afisha[i], result);
 
-            result[j] = afisha[i];
-            j = j + 1;
         }
-        return result;
     }
 }
-
-
-//        public int getTotal() {
-//            int sum = 0;
-//            for (PurchaseItem item : repo.getItems()) {
-//                sum = sum + item.getCount() * item.getProductPrice();
-//            }
-//            return sum;
-//        }
