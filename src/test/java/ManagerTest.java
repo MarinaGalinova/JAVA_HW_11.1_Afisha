@@ -31,7 +31,7 @@ public class ManagerTest {
     }
 
     @Test
-    public void testFindLastParametr() {
+    public void findLastParametrUnderAfishaLength() {
 
         Manager manager = new Manager(3);
 
@@ -48,7 +48,37 @@ public class ManagerTest {
     }
 
     @Test
-    public void testFindLastWithoutParam() {
+    public void findLastParametrOverAfishaLength() {
+
+        Manager manager = new Manager(5);
+
+        manager.addPoster("Первый добавленный");
+        manager.addPoster("Второй добавленный");
+        manager.addPoster("Третий добавленный");
+
+        String[] expected = {"Третий добавленный", "Второй добавленный", "Первый добавленный"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+    public void findLastParametrEqualAfishaLength() {
+
+        Manager manager = new Manager(3);
+
+        manager.addPoster("Первый добавленный");
+        manager.addPoster("Второй добавленный");
+        manager.addPoster("Третий добавленный");
+
+        String[] expected = {"Третий добавленный", "Второй добавленный", "Первый добавленный"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+    public void findLastWithoutParamUnderAfishaLength() {
         Manager manager = new Manager();
 
         manager.addPoster("1");
@@ -70,4 +100,26 @@ public class ManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void findLastWithoutParamEqualAfishaLength() {
+        Manager manager = new Manager();
+
+        manager.addPoster("1");
+        manager.addPoster("2");
+        manager.addPoster("3");
+        manager.addPoster("4");
+        manager.addPoster("5");
+        manager.addPoster("6");
+        manager.addPoster("7");
+        manager.addPoster("8");
+        manager.addPoster("9");
+        manager.addPoster("10");
+
+        String[] expected = { "10","9", "8", "7", "6", "5", "4", "3", "2", "1"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }

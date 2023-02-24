@@ -32,18 +32,18 @@ public class Manager {
 
 
     public String[] findLast() {
-
+        int tmpLength = limit;
         if (afisha.length < limit) {
-            limit = afisha.length;
+            tmpLength = afisha.length;
         }
-        String[] tmp = new String[limit];
-        {
-            for (int i = 0; i < tmp.length; i++) {
-                tmp[i] = afisha[afisha.length - 1 - i];
-            }
-            return tmp;
+        String[] tmp = new String[tmpLength];
+
+        for (int i = 0; i < tmp.length; i++) {
+            tmp[i] = afisha[afisha.length - 1 - i];
+        }
+        return tmp;
 
 
-        }
     }
 }
+
